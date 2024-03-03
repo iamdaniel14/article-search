@@ -1,0 +1,58 @@
+body {
+width: 100%;
+margin: 0px;
+ padding: 0px;
+box-sizing: border-box;
+}
+
+
+#article-title-section{
+width: 1500px;
+margin-right: auto;
+margin-left: auto;
+    }
+    
+
+.article-container{
+width: 1500px;
+display: flex;
+margin-left: auto;
+margin-right: auto;
+flex-wrap: wrap;
+}
+
+.article-sub-container{
+width: 600px;
+margin-right: 20px;
+margin-bottom: 20px;
+background-color: bisque;
+}
+
+#title{
+font-size: 20px;
+color: black;
+
+}
+
+.read-more{
+background-color: brown;
+text-decoration: none;
+font-size: 25px;
+color: white;
+padding: 4px;
+}
+
+.read-more:hover{
+color: black;
+}
+
+.paragraph,.snippet,.title,.source{
+padding: 10px;
+}
+
+.writer,.pub-date{
+padding: 10px;
+padding-bottom: 0px;
+margin: 0;
+}
+
