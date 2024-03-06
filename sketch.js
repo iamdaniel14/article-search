@@ -2,6 +2,7 @@
 let articleMainContainer=document.querySelector(".article-container");
 let beginYear="1990";
 let endYear="1991";
+let category="travel"
 
 
 let beginYearInput=document.querySelector("#start-year");
@@ -10,9 +11,9 @@ let endYearInput=document.querySelector("#end-year");
 const ARTICLE_CATEGORY=document.querySelector("#category");
 let article_options= ARTICLE_CATEGORY.options[ARTICLE_CATEGORY.selectedIndex]
 
-async function fetchData(beginYear,endYear){
+async function fetchData(){
 try {
-    let response=await fetch (`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=travel&begin_date=${beginYear}0101S&end_date=${endYear}1230&page=2&api-key=m2el98Ix9bYGsagBRzWNVuH9ysGouuSs`);
+    let response=await fetch (`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${category}&begin_date=${beginYear}0101S&end_date=${endYear}1230&page=2&api-key=m2el98Ix9bYGsagBRzWNVuH9ysGouuSs`);
     let json = await response.json ();
 
     console.log ("data is fetched");
@@ -84,17 +85,17 @@ articleMainContainer.appendChild (articleSubContainer)
 }
 
 
-function getValue() {
-    beginYear= beginYearInput.value;
+// function getValue() {
+//     beginYear= beginYearInput.value;
     
-    endYear=endYearInput.value;
-    articleAwait (beginYear,endYear);
+//     endYear=endYearInput.value;
+//     // articleAwait (beginYear,endYear);
     
     
-    }
+//     }
 
-async function articleAwait (beginYear,endYear){
-let articles= await fetchData (beginYear,endYear);
+async function articleAwait (){
+let articles= await fetchData ();
  displayArticles(articles);
 }
 
