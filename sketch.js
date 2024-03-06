@@ -1,26 +1,34 @@
 
 let articleMainContainer=document.querySelector(".article-container");
+let beginYear="1990";
+let endYear="1991";
 
 
-async function fetchData (){
+let beginYearInput=document.querySelector("#start-year");
+let endYearInput=document.querySelector("#end-year");
+
+const ARTICLE_CATEGORY=document.querySelector("#category");
+let article_options= ARTICLE_CATEGORY.options[ARTICLE_CATEGORY.selectedIndex]
+
+async function fetchData(beginYear,endYear){
 try {
-    let response=await fetch ("https://api.nytimes.com/svc/search/v2/articlesearch.json?q=travel&begin_date=19900101&end_date=20021230&page=2&api-key=m2el98Ix9bYGsagBRzWNVuH9ysGouuSs");
+    let response=await fetch (`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=travel&begin_date=${beginYear}0101S&end_date=${endYear}1230&page=2&api-key=m2el98Ix9bYGsagBRzWNVuH9ysGouuSs`);
     let json = await response.json ();
 
     console.log ("data is fetched");
-    console.log (json.response.docs[2].lead_paragraph);
-    console.log (json.response.docs[2].snippet);
-    console.log (json.response.docs[2].abstract);
+   
 
     return json.response.docs ;
 
 }catch (err){
-    console.log ("data is not fetched");
-    console.error (err)
+console.log ("data is not fetched");
+console.error (err)
 }
 }
 
 function displayArticles (articles){
+
+    articleMainContainer.innerHTML="";
 
 for (let article of articles){ 
 let articleSubContainer=document.createElement("div"); //creating sub container for each article
@@ -69,29 +77,32 @@ articleLink.setAttribute("href",article.web_url);
 articleLink.innerHTML="Read more";
 articleLink.classList.add("read-more")
 articleSubContainer.appendChild(articleLink);
-
-
-
-
-
-
-// let articleImg=document.createElement('img');
-// articleImg.setAttribute ('src',article.multimedia[0].url);
-// articleImg.classList.add('images');
-// articleSubContainer.appendChild(articleImg);
-
 articleMainContainer.appendChild (articleSubContainer)
-    
     
     }
 
 }
 
 
-async function articleAwait  () {
-let articles= await fetchData ();
- displayArticles(articles);
+function getValue() {
+    beginYear= beginYearInput.value;
+    
+    endYear=endYearInput.value;
+    articleAwait (beginYear,endYear);
+    
+    
+    }
 
+async function articleAwait (beginYear,endYear){
+let articles= await fetchData (beginYear,endYear);
+ displayArticles(articles);
 }
 
+
+
+
 articleAwait ();
+
+
+
+

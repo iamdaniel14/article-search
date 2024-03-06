@@ -8,6 +8,42 @@
   </head>
   <body>
     <img src="img/poweredby_nytimes_200a.png" alt="" />
+    <form action="" onsubmit="getValue()">
+      <label for="category">choose article category</label>
+      <select name="" id="category">
+        <option value="travel">travel</option>
+        <option value="sports">sports</option>
+        <option value="election">election</option>
+      </select>
+      <br />
+      begin year:
+      <input
+        type="number"
+        min="1990"
+        max="2024"
+        value="1990"
+        name=""
+        id="start-year"
+      />
+
+      <br />
+      end year:
+      <input
+        type="number"
+        min="1990"
+        max="2024"
+        value="1991"
+        name=""
+        id="end-year"
+      />
+      <br />
+
+      <input type="submit" value="search" id="submit" />
+    </form>
+
+    <button id="prev-page-button">prev page</button>
+    <button id="next-page-button">next page</button>
+
     <div id="article-title-section">
       <p id="title">Top articles in travels</p>
     </div>
