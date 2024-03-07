@@ -4,28 +4,24 @@ let beginYear="2000";
 let endYear="2001";
 let category="travel";
 let page=0;
-
-
 let beginYearInput=document.querySelector("#start-year");
 let endYearInput=document.querySelector("#end-year");
 const NEXT_BUTTON=document.querySelector("#next-page-button");
 NEXT_BUTTON.addEventListener("click",()=>{
-
-    page++;
-    console.log(page);
-    articleAwait ();
-
+page++;
+console.log(page);
+articleAwait ();
 });
 
 
 const PREV_BUTTON=document.querySelector("#prev-page-button");
 PREV_BUTTON.addEventListener("click",()=>{
 
-    if(!page<0) { 
-    page--;
+if(!page<0) { 
+page--;
 }
-    console.log(page);
-    articleAwait ();
+console.log(page);
+articleAwait ();
 
 })
 
@@ -36,10 +32,9 @@ async function fetchData(){
 try {
     let response=await fetch (`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${category}&begin_date=${beginYear}0101S&end_date=${endYear}1230&page=${page}&api-key=m2el98Ix9bYGsagBRzWNVuH9ysGouuSs`);
     let json = await response.json ();
-
     console.log ("data is fetched");
    
-    return json.response.docs ;
+return json.response.docs ;
 
 }catch (err){
 console.log ("data is not fetched");
@@ -134,17 +129,18 @@ async function articleAwait (){
 
 let links=document.querySelectorAll(".pages");
 
-
 function changePage (event){
-   links.forEach(p=>{
-    p.classList.remove(`"active"`);
-    console.log (event.target.value);
-    page=event.target.value;
-    console.log (page);
+links.forEach(p=>{
+p.classList.remove("active");
+console.log (event.target.value);
+
     
     }) ;
-    articleAwait ();
-    event.target.classList.add("active");
+page=event.target.value;
+console.log (page);
+
+articleAwait ();
+event.target.classList.add("active");
     }
 
 articleAwait ();
