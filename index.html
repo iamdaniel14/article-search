@@ -9,48 +9,73 @@
   <body>
     <img src="img/poweredby_nytimes_200a.png" alt="" />
     <form action="" id="my-form">
-      <label for="category">choose article category</label>
-      <select name="" id="category">
-        <option value="travel">travel</option>
-        <option value="sports">sports</option>
-        <option value="election">election</option>
-        <option value="technology">technology</option>
-        <option value="science">science</option>
-      </select>
-      <br />
-      begin year:
-      <input
-        type="number"
-        min="1990"
-        max="2024"
-        value="1990"
-        name=""
-        id="start-year"
-      />
-
-      <br />
-      end year:
-      <input
-        type="number"
-        min="1990"
-        max="2024"
-        value="1991"
-        name=""
-        id="end-year"
-      />
+      <div>
+        <label class="label" for="category"> Article category:</label>
+        <select name="" id="category">
+          <option value="travel" class="category-options">travel</option>
+          <option value="sports" class="category-options">sports</option>
+          <option value="election" class="category-options">election</option>
+          <option value="technology" class="category-options">
+            technology
+          </option>
+          <option value="obituaries" class="category-options">
+            obituaries
+          </option>
+          <option value="business" class="category-options">business</option>
+          <option value="science" class="category-options">science</option>
+        </select>
+      </div>
       <br />
 
-      <input type="submit" value="search" id="submit" />
+      <div>
+        <label class="label" for="start-year"> Begin year:</label>
+        <input
+          type="number"
+          min="1970"
+          max="2024"
+          value="2000"
+          name=""
+          id="start-year"
+        />
+      </div>
+      <div>
+        <label class="label" for="end-year"> End year:</label>
+        <input
+          type="number"
+          min="197"
+          max="2024"
+          value="2001"
+          name=""
+          id="end-year"
+        />
+      </div>
+      <br />
+
+      <div>
+        <input type="submit" value="search" id="submit" />
+      </div>
     </form>
 
-    <button id="prev-page-button">prev page</button>
-    <button id="next-page-button">next page</button>
-
     <div id="article-title-section">
-      <p id="title">Top articles in travels</p>
+      <p id="article-category-title">Travel</p>
     </div>
     <div class="article-container"></div>
-
+    <div id="button-container">
+      <div>
+        <button id="prev-page-button">prev page</button>
+      </div>
+      <div id="page-contaoner">
+        <ul class="unordered-list">
+          <li value="1" class="pages active" onclick="changePage(event)">1</li>
+          <li value="2" class="pages" onclick="changePage(event)">2</li>
+          <li value="3" class="pages" onclick="changePage(event)">3</li>
+          <li value="4" class="pages" onclick="changePage(event)">4</li>
+        </ul>
+      </div>
+      <div>
+        <button id="next-page-button">next page</button>
+      </div>
+    </div>
     <script src="sketch.js" defer></script>
   </body>
 </html>

@@ -1,20 +1,20 @@
 body {
 width: 100%;
 margin: 0px;
- padding: 0px;
+padding: 0px;
 box-sizing: border-box;
 }
 
 
 #article-title-section{
-width: 1500px;
+width: 1000px;
 margin-right: auto;
 margin-left: auto;
-    }
+}
     
 
 .article-container{
-width: 1500px;
+width: 1000px;
 display: flex;
 margin-left: auto;
 margin-right: auto;
@@ -22,8 +22,7 @@ flex-wrap: wrap;
 }
 
 .article-sub-container{
-width: 600px;
-margin-right: 20px;
+width: 1000px;
 margin-bottom: 20px;
 background-color: bisque;
 }
@@ -56,3 +55,71 @@ padding-bottom: 0px;
 margin: 0;
 }
 
+#my-form{
+width: 1800px;
+display: flex;
+justify-content: space-between;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+input[type="submit"] {
+color:black;
+font-size: 30px;
+}
+
+input[type=number]{
+font-size: 30px;
+}
+label{
+font-size: 30px;
+}
+.label::first-letter{
+ text-transform: capitalize;
+}
+#category{
+font-size: 30px;
+    }
+
+.category-options{
+font-size: 30px;
+}
+   
+.category-options:first-letter{
+text-transform: capitalize;}
+
+.article-category-title{
+font-size: 30px;
+}
+
+#button-container{
+width: 1000px;
+display: flex;
+justify-content: space-between;
+margin-left: auto;
+margin-right: auto;
+}
+#prev-page-button,#next-page-button{
+    font-size: 30px;
+}
+.unordered-list{
+ display: flex;
+ justify-content: space-around;
+ list-style-type: none;
+ gap: 55px;
+}
+
+.pages{
+width: 50px;
+height: 50px;
+background-color: aquamarine;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+ul li.active{
+background-color: red;
+}

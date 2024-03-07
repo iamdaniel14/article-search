@@ -1,25 +1,44 @@
 
 let articleMainContainer=document.querySelector(".article-container");
-let beginYear="1990";
-let endYear="1991";
+let beginYear="2000";
+let endYear="2001";
 let category="travel";
-
+let page=0;
 
 
 let beginYearInput=document.querySelector("#start-year");
 let endYearInput=document.querySelector("#end-year");
+const NEXT_BUTTON=document.querySelector("#next-page-button");
+NEXT_BUTTON.addEventListener("click",()=>{
+
+    page++;
+    console.log(page);
+    articleAwait ();
+
+});
+
+
+const PREV_BUTTON=document.querySelector("#prev-page-button");
+PREV_BUTTON.addEventListener("click",()=>{
+
+    if(!page<0) { 
+    page--;
+}
+    console.log(page);
+    articleAwait ();
+
+})
 
 
 
 
 async function fetchData(){
 try {
-    let response=await fetch (`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${category}&begin_date=${beginYear}0101S&end_date=${endYear}1230&page=0&api-key=m2el98Ix9bYGsagBRzWNVuH9ysGouuSs`);
+    let response=await fetch (`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${category}&begin_date=${beginYear}0101S&end_date=${endYear}1230&page=${page}&api-key=m2el98Ix9bYGsagBRzWNVuH9ysGouuSs`);
     let json = await response.json ();
 
     console.log ("data is fetched");
    
-
     return json.response.docs ;
 
 }catch (err){
@@ -80,8 +99,9 @@ articleLink.innerHTML="Read more";
 articleLink.classList.add("read-more")
 articleSubContainer.appendChild(articleLink);
 articleMainContainer.appendChild (articleSubContainer)
+
     
-    }
+ }
 
 }
 
@@ -90,7 +110,6 @@ let submitButton=document.querySelector("#my-form")
 submitButton.addEventListener ("submit",(event)=>{
 event.preventDefault();
 console.log(beginYearInput.value);
-
  beginYear=beginYearInput.value;
 endYear=endYearInput.value;
 
@@ -98,18 +117,35 @@ endYear=endYearInput.value;
 const ARTICLE_CATEGORY=document.querySelector("#category");
 let article_options= ARTICLE_CATEGORY.options[ARTICLE_CATEGORY.selectedIndex];
 console.log(article_options.value);
-
 category=article_options.value;
 
-articleAwait ()
+const ARTICLE_CATEGORY_TITLE=document.querySelector("#article-category-title");
+ARTICLE_CATEGORY_TITLE.innerHTML=article_options.value;
+
+articleAwait ();
 })
 
 
-async function articleAwait (beginYear){
- let articles= await fetchData (beginYear);
+async function articleAwait (){
+ let articles= await fetchData ();
  displayArticles(articles);
-    }
+}
 
+
+let links=document.querySelectorAll(".pages");
+
+
+function changePage (event){
+   links.forEach(p=>{
+    p.classList.remove(`"active"`);
+    console.log (event.target.value);
+    page=event.target.value;
+    console.log (page);
+    
+    }) ;
+    articleAwait ();
+    event.target.classList.add("active");
+    }
 
 articleAwait ();
 
