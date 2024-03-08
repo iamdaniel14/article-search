@@ -6,26 +6,6 @@ let category="travel";
 let page=0;
 let beginYearInput=document.querySelector("#start-year");
 let endYearInput=document.querySelector("#end-year");
-const NEXT_BUTTON=document.querySelector("#next-page-button");
-NEXT_BUTTON.addEventListener("click",()=>{
-page++;
-console.log(page);
-articleAwait ();
-});
-
-
-const PREV_BUTTON=document.querySelector("#prev-page-button");
-PREV_BUTTON.addEventListener("click",()=>{
-
-if(!page<0) { 
-page--;
-}
-console.log(page);
-articleAwait ();
-
-})
-
-
 
 
 async function fetchData(){
@@ -91,11 +71,10 @@ articleSubContainer.appendChild(source);
 let articleLink=document.createElement ("a");
 articleLink.setAttribute("href",article.web_url);
 articleLink.innerHTML="Read more";
-articleLink.classList.add("read-more")
+articleLink.classList.add("read-more");
+articleLink.target="_blank"
 articleSubContainer.appendChild(articleLink);
-articleMainContainer.appendChild (articleSubContainer)
-
-    
+articleMainContainer.appendChild (articleSubContainer);
  }
 
 }
@@ -107,6 +86,12 @@ event.preventDefault();
 console.log(beginYearInput.value);
  beginYear=beginYearInput.value;
 endYear=endYearInput.value;
+
+const FROM_YEAR=document.querySelector("#fromYear");
+FROM_YEAR.innerHTML= beginYear;
+
+const TO_YEAR=document.querySelector("#toYear");
+TO_YEAR.innerHTML= endYear;
 
     
 const ARTICLE_CATEGORY=document.querySelector("#category");
@@ -132,18 +117,61 @@ let links=document.querySelectorAll(".pages");
 function changePage (event){
 links.forEach(p=>{
 p.classList.remove("active");
-console.log (event.target.value);
-
+ currentPage =event.target.value;
+ 
     
     }) ;
-page=event.target.value;
+page=currentPage;
 console.log (page);
-
-articleAwait ();
 event.target.classList.add("active");
+articleAwait ();
+
     }
 
+
+const NEXT_BUTTON=document.querySelector("#next-page-button");
+NEXT_BUTTON.addEventListener("click",()=>{
+
+console.log(page);
+links.forEach((p)=>{
+p.classList.remove("active");
+
+})
+if (page<4){ 
+page++;
+
+links[page].classList.add("active");
+}
 articleAwait ();
+    });
+
+
+const PREV_BUTTON=document.querySelector("#prev-page-button");
+PREV_BUTTON.addEventListener("click",()=>{
+
+links.forEach((p)=>{
+p.classList.remove("active");
+
+})
+
+if(page>0){
+page--;
+}
+links[page].classList.add("active");
+console.log(page);
+articleAwait ();
+
+})
+
+
+
+     
+
+articleAwait ();
+
+
+
+
 
 
 

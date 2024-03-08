@@ -8,17 +8,33 @@ box-sizing: border-box;
 
 #article-title-section{
 width: 1000px;
-margin-right: auto;
-margin-left: auto;
+height: 100px;
+background-color: rgb(183, 170, 195);
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 50px auto 50px auto;
 }
     
-
 .article-container{
 width: 1000px;
 display: flex;
 margin-left: auto;
 margin-right: auto;
 flex-wrap: wrap;
+}
+#title-container{
+ width: 1000px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+margin-left: auto;
+margin-right: auto;
+}
+
+#page-title{
+font-size:50px;
+color: brown;
 }
 
 .article-sub-container{
@@ -27,10 +43,30 @@ margin-bottom: 20px;
 background-color: bisque;
 }
 
+#article-category-title{
+background-color: rgb(183, 170, 195);
+font-size: 50px;
+}
+
+
+#article-category-title::first-letter{
+text-transform: uppercase;
+    }
+#article-begin-end-year{
+font-size: 20px; 
+    }
+
+ #fromYear{
+color: bisque;
+ }
+
+ #toYear{
+color: brown;
+}
+    
 #title{
 font-size: 20px;
-color: black;
-
+background-color: rgb(183, 170, 195);
 }
 
 .read-more{
@@ -66,24 +102,33 @@ margin-right: auto;
 
 input[type="submit"] {
 color:black;
-font-size: 30px;
+font-size: 20px;
+color: rgb(183, 170, 195);
 }
 
+
+input[type="submit"]:hover {
+background-color:rgb(104,28, 175);
+    
+    }
+
 input[type=number]{
-font-size: 30px;
+font-size: 20px;
+color:rgb(183, 170, 195);
 }
-label{
-font-size: 30px;
+.labels{
+font-size: 20px;
+color: rgb(157, 115, 65);
 }
-.label::first-letter{
- text-transform: capitalize;
-}
+
 #category{
-font-size: 30px;
+font-size: 20px;
+color: brown;
     }
 
 .category-options{
-font-size: 30px;
+font-size: 20px;
+color:rgb(183, 170, 195);
 }
    
 .category-options:first-letter{
@@ -97,11 +142,16 @@ font-size: 30px;
 width: 1000px;
 display: flex;
 justify-content: space-between;
+align-items: center;
 margin-left: auto;
 margin-right: auto;
+background-color: rgb(183, 170, 195);
 }
 #prev-page-button,#next-page-button{
-    font-size: 30px;
+font-size: 20px;
+height: 40px;
+border: none;
+color: rgb(157, 115, 65);
 }
 .unordered-list{
  display: flex;
@@ -111,9 +161,9 @@ margin-right: auto;
 }
 
 .pages{
-width: 50px;
-height: 50px;
-background-color: aquamarine;
+width: 40px;
+height: 40px;
+background-color: bisque;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -121,5 +171,5 @@ justify-content: center;
 }
 
 ul li.active{
-background-color: red;
+background-color: brown;
 }

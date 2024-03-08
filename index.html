@@ -8,9 +8,11 @@
   </head>
   <body>
     <img src="img/poweredby_nytimes_200a.png" alt="" />
+    <div id="title-container"><h1 id="page-title">Articles from new york times</h1>
+    </div>
     <form action="" id="my-form">
       <div>
-        <label class="label" for="category"> Article category:</label>
+        <label class="labels" for="category"> Article category:</label>
         <select name="" id="category">
           <option value="travel" class="category-options">travel</option>
           <option value="sports" class="category-options">sports</option>
@@ -28,7 +30,7 @@
       <br />
 
       <div>
-        <label class="label" for="start-year"> Begin year:</label>
+        <label class="labels" for="start-year"> Begin year:</label>
         <input
           type="number"
           min="1970"
@@ -39,7 +41,7 @@
         />
       </div>
       <div>
-        <label class="label" for="end-year"> End year:</label>
+        <label class="labels" for="end-year"> End year:</label>
         <input
           type="number"
           min="197"
@@ -57,14 +59,15 @@
     </form>
 
     <div id="article-title-section">
-      <p id="article-category-title">Travel</p>
+      <div><p id="article-category-title">Travel</p></div>
+      <div><p id="article-begin-end-year">Articles from  <span id="fromYear">2000</span> to  <span id="toYear">2001</span></p></div>
     </div>
     <div class="article-container"></div>
     <div id="button-container">
       <div>
-        <button id="prev-page-button">prev page</button>
+        <button id="prev-page-button">Prev page</button>
       </div>
-      <div id="page-contaoner">
+      <div id="page-container">
         <ul class="unordered-list">
           <li value="1" class="pages active" onclick="changePage(event)">0</li>
           <li value="1" class="pages" onclick="changePage(event)">1</li>
@@ -74,7 +77,7 @@
         </ul>
       </div>
       <div>
-        <button id="next-page-button">next page</button>
+        <button id="next-page-button">Next page</button>
       </div>
     </div>
     <script src="sketch.js" defer></script>
