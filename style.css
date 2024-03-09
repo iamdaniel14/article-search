@@ -159,6 +159,14 @@ color: rgb(157, 115, 65);
  list-style-type: none;
  gap: 55px;
 }
+.pub-date{
+color: rgb(235, 149, 149);
+font-size: 20px;
+}
+.writer{
+color: aliceblue;
+font-size: 30px;
+}
 
 .pages{
 width: 40px;

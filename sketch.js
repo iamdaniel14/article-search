@@ -37,11 +37,12 @@ writer.classList.add('writer');
 articleSubContainer.appendChild(writer);
 
 let pubDate=document.createElement('p');
-pubDate.innerHTML="Published:" +article.pub_date;
+let s=article.pub_date;
+let r=/\d{4}[-.]\d{2}[-.]\d{2}/;
+let datePublished=s.match (r);
+pubDate.innerHTML="Published:" +datePublished ;
 pubDate.classList.add('pub-date');
 articleSubContainer.appendChild(pubDate);
-
-
 
 let title=document.createElement('h1');
 title.innerHTML=article.abstract;
